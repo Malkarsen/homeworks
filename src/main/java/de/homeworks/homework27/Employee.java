@@ -8,11 +8,11 @@ public class Employee {
     private String position;
     private double salary;
 
-    public Employee(double salary, String position, String name, String id) {
-        this.salary = salary;
-        this.position = position;
-        this.name = name;
+    public Employee(String id, String name, String position, double salary) {
         this.id = id;
+        this.name = name;
+        this.position = position;
+        this.salary = salary;
     }
 
     public String getId() {
@@ -44,8 +44,10 @@ public class Employee {
     }
 
     protected String getInfo() {
-        return "Employee{" +
-                "id='" + id + ", name='" + name + ", position='" + position + ", salary=" + salary + '}';
+        return "Employee{" + "id='"
+                + id + "', name='"
+                + name + "', position='" + position + "', salary="
+                + salary + '}';
     }
 
     @Override

@@ -46,6 +46,10 @@ public class Business {
         return null;
     }
 
+    public HashMap<String, Department> getDepartments() {
+        return new HashMap<>(departments);
+    }
+
     public HashSet<String> getAllPositions() {
         HashSet<String> positions = new HashSet<>();
         for (Department department : departments.values()) {
@@ -58,6 +62,10 @@ public class Business {
 
     public double getTotalCompanySalary() {
         double totalSalaryBusiness = 0;
+        if (departments.isEmpty()) {
+            System.out.println("No departments found");
+            return totalSalaryBusiness;
+        }
         for (Department department : departments.values()) {
             totalSalaryBusiness += department.getTotalSalary();
         }

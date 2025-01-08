@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Department {
     private String name;
-    private ArrayList<Employee> employees;
+    private ArrayList<Employee> employees = new ArrayList<>();
 
     public Department(String name) {
         this.name = name;
