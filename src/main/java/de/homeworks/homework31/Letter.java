@@ -27,9 +27,13 @@ public class Letter extends MailItem {
     @Override
     public void printDetails() {
         System.out.println("Letter:");
-        log.info("Letter");
         super.printDetails();
-        System.out.println("Registered: " + isRegistered);
-        log.info("Registered: {}", isRegistered);
+        if(isRegistered) {
+            System.out.println("Registered: Yes");
+        } else {
+            System.out.println("Registered: No");
+        }
+        System.out.println("Shipping cost: " + calculateShippingCost() + " euros");
+        System.out.println("--------------");
     }
 }

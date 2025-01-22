@@ -34,18 +34,30 @@ public class PostOffice {
 
     // выводит общую стоимость доставки для всех отправлений в списке
     public double calculateTotalShippingCost() {
-        double cost = 0;
-        for (MailItem item : mailItems) {
-            cost += item.calculateShippingCost();
+        if (mailItems.isEmpty()) {
+            System.out.println("No mail items found");
+            log.warn("No mail items found");
+            return 0;
+        } else {
+            double cost = 0;
+            for (MailItem item : mailItems) {
+                cost += item.calculateShippingCost();
+            }
+            System.out.println("Total shipping cost: " + cost + " euros");
+            log.info("Total shipping cost: {} euros", cost);
+            return cost;
         }
-        System.out.println("Total shipping cost: " + cost + " euros");
-        return cost;
     }
 
     // выводит информацию обо всех отправлениях, используя метод printDetails()
     public void printAllDetails() {
-        for (MailItem item : mailItems) {
-            item.printDetails();
+        if (mailItems.isEmpty()) {
+            System.out.println("No mail items found");
+            log.warn("No mail items found");
+        } else {
+            for (MailItem item : mailItems) {
+                item.printDetails();
+            }
         }
     }
 }

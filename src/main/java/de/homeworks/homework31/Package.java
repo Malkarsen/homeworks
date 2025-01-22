@@ -8,6 +8,7 @@ public class Package extends MailItem {
     private double length;
     private double width;
     private double height;
+    private double priceKilogram = 2.0;
 
     public Package(String sender, String recipient, double weight,
                    double length, double width, double height) {
@@ -34,18 +35,17 @@ public class Package extends MailItem {
         if (getWeight() <= 0) {
             return 0;
         } else {
-            return getWeight() / 2;
+            return getWeight() * priceKilogram;
         }
     }
 
     @Override
     public void printDetails() {
         System.out.println("Package:");
-        log.info("Package:");
         super.printDetails();
         System.out.println("Length: " + length + " cm\n" +
                 "Width - " + width + " cm\n" + "Height - " + height + " cm" );
-        log.info("Length - {}, Width - {}, Height - {}",
-                length, width, height);
+        System.out.println("Shipping cost: " + calculateShippingCost() + " euros");
+        System.out.println("--------------");
     }
 }

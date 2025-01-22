@@ -32,6 +32,5 @@ public abstract class MailItem {
     // обычный метод, который выводит информацию об отправлении, включая отправителя, получателя и вес.
     public void printDetails() {
         System.out.println("Sender: " + sender + "\nRecipient: " + recipient + "\nWeight: " + weight + "kg");
-        log.info("Sender: {}, recipient: {}, weight: {}kg", sender, recipient, weight);
     }
 }
