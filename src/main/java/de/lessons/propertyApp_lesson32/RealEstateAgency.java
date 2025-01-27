@@ -10,6 +10,7 @@ import java.util.List;
 @Slf4j
 public class RealEstateAgency {
     private List<Property> properties; // список объектов недвижимости
+    private double totalPrice; // общая стоимость всех объектов недвижимости
 
     public RealEstateAgency() {
         this.properties = new ArrayList<>();
@@ -19,32 +20,48 @@ public class RealEstateAgency {
         return new ArrayList<>(properties);
     }
 
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
     // добавляет объект недвижимости в список
     public void addProperty(Property property) {
-        if (property == null) {
-            System.out.println("Property is null");
-            log.warn("Property is null");
-        } else {
+        if (checkProperty(property)) {
             properties.add(property);
             System.out.println("Property was added");
             log.info("Property was added");
+        } else {
+            System.out.println("Property is invalid");
+            log.warn("Property is invalid");
+        }
+    }
+
+    private boolean checkProperty(Property property) {
+        if (property == null) {
+            return false;
+        } else if (property.calculatePrice() <= 0) {
+            return false;
+        } else if (property.getAddress() == null || property.getAddress().isEmpty()
+                /*|| property.checkProperty(property)*/) {
+            return false;
+        } else {
+            return true;
         }
     }
 
     // выводит общую стоимость всех объектов недвижимости
-    public double calculateTotalPrice() {
+    public void calculateTotalPrice() {
         System.out.println("------------------------");
         if (properties.isEmpty()) {
             System.out.println("No properties found");
             log.warn("No properties found");
-            return 0;
+            totalPrice = 0;
         } else {
-            double totalPrice = 0;
+            totalPrice = 0;
             for (Property property : properties) {
                 totalPrice += property.calculatePrice();
             }
             System.out.println("Total price: " + totalPrice + " euros");
-            return totalPrice;
         }
     }
 

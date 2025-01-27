@@ -17,6 +17,11 @@ public class House implements Property {
         return address;
     }
 
+    @Override
+    public boolean checkProperty(Property property) {
+        return false;
+    }
+
     public double getArea() {
         return area;
     }

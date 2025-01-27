@@ -17,6 +17,15 @@ public class CommercialProperty implements Property {
         return address;
     }
 
+    @Override
+    public boolean checkProperty(Property property) {
+        if (area <= 0 || businessType.isEmpty() || businessType == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public double getArea() {
         return area;
     }
@@ -52,7 +61,17 @@ public class CommercialProperty implements Property {
 
     @Override
     public void printDetails() {
-        System.out.println("Commercial Property:");
+        switch (businessType) {
+            case "office":
+                System.out.println("Office: ");;
+                break;
+            case "warehouse":
+                System.out.println("Warehouse: ");;
+                break;
+            default:
+                System.out.println("Other object: ");;
+                break;
+        }
         System.out.println("Address: " + address);
         System.out.println("Area: " + area + " square meters");
         System.out.println("Business type: " + businessType);

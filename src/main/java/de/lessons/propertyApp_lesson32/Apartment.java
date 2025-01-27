@@ -30,6 +30,15 @@ public class Apartment implements Property {
     }
 
     @Override
+    public boolean checkProperty(Property property) {
+        if (floor <= 0 || area <= 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    @Override
     public double calculatePrice() {
         int pricePerSquareMeter = 1000; // цена за квадратный метр
         double price = pricePerSquareMeter * area;

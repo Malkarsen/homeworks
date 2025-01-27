@@ -70,7 +70,8 @@ public class RealEstateAgencyTest {
         realEstateAgency.addProperty(warehouse);
 
         // Act
-        double totalPrice = realEstateAgency.calculateTotalPrice();
+        realEstateAgency.calculateTotalPrice();
+        double totalPrice = realEstateAgency.getTotalPrice();
 
         // Assert
         assertEquals(expectedCost, totalPrice, 0.01);
