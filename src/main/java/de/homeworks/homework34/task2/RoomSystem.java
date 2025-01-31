@@ -1,7 +1,5 @@
 package de.homeworks.homework34.task2;
 
-import java.util.Arrays;
-
 public class RoomSystem {
     private int[] rooms = {101, 102, 103, 201, 202};
     private String[] guests = new String[5];

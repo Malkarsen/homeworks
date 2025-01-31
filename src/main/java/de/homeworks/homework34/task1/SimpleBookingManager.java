@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 public class SimpleBookingManager {
     public static void main(String[] args) {
+        SimpleBooking simpleBooking = new SimpleBooking();
         HashMap<Integer, String> roomMap = new HashMap<Integer, String>();
         roomMap.put(-1, "Alice");
         roomMap.put(2, "");
@@ -14,7 +15,7 @@ public class SimpleBookingManager {
 
         for (int roomNumber : roomMap.keySet()) {
             try {
-                SimpleBooking.bookRoom(roomNumber, roomMap.get(roomNumber));
+                simpleBooking.bookRoom(roomNumber, roomMap.get(roomNumber));
             } catch (IllegalArgumentException exception) {
                 System.out.println("Incorrect booking information: "
                         + exception.getMessage());
