@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class WeatherTestData {
-    public List<Weather> getWeatherList() {
+    public static List<Weather> getWeatherList() {
         return Arrays.asList(
                 new Weather("New York", 10.5, false),
                 new Weather("Los Angeles", 18.2, false),

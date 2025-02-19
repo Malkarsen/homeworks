@@ -40,7 +40,11 @@ public class WeatherTasks {
 
         // 2
         Map<Boolean, List<String>> isRainy = groupByIsRainy();
-        System.out.println("Group by rainy: " + isRainy);
+        if (!isRainy.isEmpty()){
+            System.out.println("Group by rainy: " + isRainy);
+        } else {
+            System.out.println("No cities found.");
+        }
 
         // 3
         List<Weather> sortedWeather = sortByCityName();
@@ -83,21 +87,21 @@ public class WeatherTasks {
 
     // Подсчёт средней температуры с помощью mapToDouble и average().
     public static double getAverageTemperature() {
-        return data.getWeatherList().stream()
+        return WeatherTestData.getWeatherList().stream()
                .mapToDouble(Weather::getTemperature)
                .average()
                .orElse(0);
     }
     // Группировка по признаку isRainy (true/false) с помощью Collectors.groupingBy(...)
     public static Map<Boolean, List<String>> groupByIsRainy() {
-        return data.getWeatherList().stream()
+        return WeatherTestData.getWeatherList().stream()
                 .collect(Collectors.groupingBy(
                         Weather::isRainy, Collectors.mapping(Weather::getCity, Collectors.toList())));
     }
 
     // Сортировка данных по названию города с помощью Comparator.comparing(Weather::getCity)
     public static List<Weather> sortByCityName() {
-        return data.getWeatherList().stream()
+        return WeatherTestData.getWeatherList().stream()
                .sorted(Comparator.comparing(Weather::getCity))
                .collect(Collectors.toList());
     }
