@@ -34,6 +34,6 @@ close() закрывает поток
 --
 FileReader / FileWriter чтение и запись символов в и из файла
 BufferedReader / BufferedWriter буферизованные версии чтения и записи
-InputStreamReader / OutputStreamReader мост между байтовыми и символьными потоками, например кодировка
+InputStreamReader / OutputStreamWriter мост между байтовыми и символьными потоками, например кодировка
 PrintWriter для форматированного вывода
 
