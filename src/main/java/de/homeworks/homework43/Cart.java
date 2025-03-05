@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,6 +27,19 @@ public class Cart<T extends Product> {
         }
         log.error("Product '{}' not found in the cart.", productName);
         return null;
+    }
+
+    public boolean removeProductByName(String productName) {
+        Iterator<T> iterator = products.iterator();
+        while (iterator.hasNext()) {
+            T currentProduct = iterator.next();
+            if(productName.equals(currentProduct.getName())){
+                iterator.remove();
+                log.info("Product {} removed from cart", productName);
+                return true;
+            }
+        }
+        return false;
     }
 
     public double getTotalPrice() {
