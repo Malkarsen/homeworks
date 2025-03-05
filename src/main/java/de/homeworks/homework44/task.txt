@@ -1,0 +1,27 @@
+Упражнение «Generic Library»
+1) Создайте абстрактный класс Book:
+    Поля:
+        String title (название), String author (автор).
+    Конструктор, принимающий title и author.
+    Абстрактный метод String getDescription():
+        возвращает строку-описание книги.
+2) Создайте два (или больше) конкретных класса-наследника Book:
+    PaperBook:
+        Дополнительное поле: int pages (количество страниц).
+        Переопределённый метод getDescription(), возвращающий строку вида:
+            "Paper Book: <title> by <author> (<pages> pages)"
+
+    EBook:
+        Дополнительное поле: double fileSizeMb (размер файла в мегабайтах).
+        Переопределённый метод getDescription(), возвращающий строку вида:
+            "E-Book: <title> by <author> (File size: <fileSizeMb> MB)"
+
+3) Создайте обобщённый класс Library<T extends Book>:
+    Поле List<T> books = new ArrayList<>() для хранения книг.
+    addBook(T book): добавить книгу в библиотеку.
+    removeBook(String title): найти книгу по названию и удалить, если такая есть.
+    findBook(String title): вернуть книгу по названию (или null, если не найдена).
+    listBooks(): вывести getDescription() для каждой книги в библиотеке.
+4) Напишите тестовый класс (например, Main), в котором:
+    Создайте Library<PaperBook>, добавьте несколько бумажных книг, выведите их.
+    Создайте Library<EBook>, добавьте несколько электронных книг, найдите и удалите одну по названию, затем снова выведите оставшиеся.
